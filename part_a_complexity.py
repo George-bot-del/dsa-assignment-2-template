@@ -59,7 +59,17 @@ def a1_analysis():
         Explanation: ...
     """
     # TODO: Replace this string with your full written answer.
-    return """
+
+Worst-case time complexity: O(N^2)
+Space complexity: O(1)
+
+Explanation:
+algorithm_x uses two nested loops. The outer loop iterates through all elements,
+and for each iteration, the inner loop checks the remaining elements.
+In the worst case, no pair adds up to the target, so every possible pair is examined.
+The total number of comparisons is approximately N(N+1)/2, which simplifies to O(N^2).
+Only a constant amount of extra memory is used, so the space complexity is O(1).
+"""
     Worst-case time complexity: O(?)
     Space complexity: O(?)
     Explanation: (your justification here)
@@ -77,7 +87,19 @@ def a2_analysis():
     Write your analysis here.
     """
     # TODO: Replace this string with your full written answer.
-    return """
+    
+Worst-case time complexity: O(N)
+Space complexity: O(N)
+
+Data structure that enables the speedup:
+A hash table (Python dictionary).
+
+Space trade-off explanation:
+The dictionary stores previously seen values and their indices, allowing
+constant-time average lookup of complements. This reduces the time complexity
+from O(N^2) to O(N), but requires additional memory proportional to the number
+of elements stored, giving O(N) space complexity.
+"""
     Worst-case time complexity: O(?)
     Space complexity: O(?)
     Data structure that enables the speedup: (your answer)
@@ -96,7 +118,15 @@ def a3_analysis():
     Write your analysis here.
     """
     # TODO: Replace this string with your full written answer.
-    return """
+
+Algorithm name: Insertion Sort
+
+Best-case time complexity: O(N)
+Input arrangement: The list is already sorted in ascending order.
+
+Worst-case time complexity: O(N^2)
+Input arrangement: The list is sorted in reverse (descending) order.
+"""
     Algorithm name: (your answer)
     Best-case time complexity: O(?)   Input arrangement: (describe)
     Worst-case time complexity: O(?)  Input arrangement: (describe)
@@ -137,7 +167,13 @@ def fibonacci_iterative(n):
     Do NOT use recursion.
     """
     # TODO: Implement your iterative solution here.
-    pass
+    return [
+    {"complexity": "O(1)",       "operations": "1",                 "rank": 1},
+    {"complexity": "O(log N)",   "operations": "20",                "rank": 2},
+    {"complexity": "O(N)",       "operations": "1000000",           "rank": 3},
+    {"complexity": "O(N log N)", "operations": "20000000",          "rank": 4},
+    {"complexity": "O(N^2)",     "operations": "1000000000000",     "rank": 5},
+        ]
 
 
 def a5_explanation():
@@ -145,7 +181,28 @@ def a5_explanation():
     Explain why the naive recursive Fibonacci is O(2^N) and not O(N).
     """
     # TODO: Replace this string with your full written answer.
-    return """
+    if n == 0:
+    return 0
+if n == 1:
+    return 1
+
+a, b = 0, 1
+for _ in range(2, n + 1):
+    a, b = b, a + b
+
+return b
+Why naive recursion is O(2^N):
+The naive recursive Fibonacci function makes two recursive calls for most values:
+fib(n-1) and fib(n-2). This causes many repeated calculations of the same
+subproblems, leading to an exponential growth in the number of function calls.
+Therefore, its time complexity is approximately O(2^N).
+
+How the iterative version achieves O(N) time and O(1) space:
+The iterative algorithm computes each Fibonacci number only once using a loop.
+It keeps track of only the two previous Fibonacci numbers, requiring constant
+extra memory. The loop runs N times, resulting in O(N) time complexity and
+O(1) space complexity.
+"""
     Why naive recursion is O(2^N): (your explanation)
     How the iterative version achieves O(N) time and O(1) space: (your explanation)
     """
